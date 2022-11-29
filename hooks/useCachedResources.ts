@@ -10,11 +10,12 @@ export default function useCachedResources() {
   useEffect(() => {
     async function loadResourcesAndDataAsync() {
       try {
-        SplashScreen.preventAutoHideAsync()
+        void SplashScreen.preventAutoHideAsync()
 
         // Load fonts
         await Font.loadAsync({
           ...FontAwesome.font,
+          // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
           'space-mono': require('../assets/fonts/SpaceMono-Regular.ttf')
         })
       } catch (e) {
@@ -22,11 +23,11 @@ export default function useCachedResources() {
         console.warn(e)
       } finally {
         setLoadingComplete(true)
-        SplashScreen.hideAsync()
+        void SplashScreen.hideAsync()
       }
     }
 
-    loadResourcesAndDataAsync()
+    void loadResourcesAndDataAsync()
   }, [])
 
   return isLoadingComplete

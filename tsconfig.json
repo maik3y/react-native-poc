@@ -1,6 +1,10 @@
 {
   "extends": "expo/tsconfig.base",
+  "parserOptions": {
+    "project": ["tsconfig.json"]
+  },
   "compilerOptions": {
-    "strict": true
+    "strict": true,
+    "sourceMap": true
   }
 }
