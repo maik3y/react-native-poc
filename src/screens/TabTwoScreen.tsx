@@ -4,8 +4,8 @@ import React from 'react'
 import { ScrollView, StyleSheet } from 'react-native'
 import { useQuery } from '@tanstack/react-query'
 
-import { View, Text } from '../components/Themed'
-import Character, { ICharacter } from './Character'
+import { View, Text } from '../../components/Themed'
+import Character, { ICharacter } from '../../components/character/Character'
 
 export default function TabTwoScreen() {
   const fetchCharacters = async () => {

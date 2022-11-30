@@ -1,6 +1,6 @@
 import React from 'react'
 import { StyleSheet, Image, ImageSourcePropType, Text } from 'react-native'
-import { View } from '../components/Themed'
+import { View } from '../Themed'
 
 interface ICharacterProps {
   character: ICharacter
@@ -15,7 +15,7 @@ export interface ICharacter {
   }
 }
 
-const Character = ({ character }: ICharacterProps): React.ReactElement => {
+const Character = ({ character }: ICharacterProps) => {
   if (!character) return <></>
   const { image, name } = character
   return (
