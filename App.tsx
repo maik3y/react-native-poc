@@ -6,7 +6,6 @@ import useCachedResources from './hooks/useCachedResources'
 import useColorScheme from './hooks/useColorScheme'
 import Navigation from './navigation'
 import React from 'react'
-import { AuthProvider } from './src/providers/AuthProvider'
 
 const queryClient = new QueryClient()
 
@@ -20,10 +19,8 @@ export default function App() {
     return (
       <QueryClientProvider client={queryClient}>
         <SafeAreaProvider>
-          <AuthProvider>
-            <Navigation colorScheme={colorScheme} />
-            <StatusBar />
-          </AuthProvider>
+          <Navigation colorScheme={colorScheme} />
+          <StatusBar />
         </SafeAreaProvider>
       </QueryClientProvider>
     )
