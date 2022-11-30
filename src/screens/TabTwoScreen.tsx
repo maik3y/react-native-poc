@@ -13,9 +13,7 @@ export default function TabTwoScreen() {
     return response.json()
   }
   // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-  const { data, status } = useQuery(['characters', 40], fetchCharacters, {
-    keepPreviousData: true
-  })
+  const { data, status } = useQuery(['characters'], fetchCharacters)
 
   if (status === 'loading') {
     return <Text>Loading</Text>
