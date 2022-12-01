@@ -4,13 +4,13 @@ MVP for mobile app made with React Native and Expo
 
 ## Getting Started
 
-To install the dependencies, run:
+run:
 
 ```
 yarn
 ```
 
-To start the application, run:
+Good to go, run the command below to start.
 
 ```
 yarn start
