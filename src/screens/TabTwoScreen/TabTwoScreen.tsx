@@ -3,8 +3,7 @@
 import React from 'react'
 import { ScrollView, StyleSheet, View, Text } from 'react-native'
 import { useQuery } from '@tanstack/react-query'
-
-import Character, { ICharacter } from '../../components/character/Character'
+import Character, { ICharacter } from '../../../components/character/Character'
 
 export default function TabTwoScreen() {
   const fetchCharacters = async () => {
@@ -38,7 +37,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: 'blue',
+    backgroundColor: 'blue'
   },
   scrollView: {},
   title: {

@@ -6,9 +6,9 @@ const StyledText = styled(Text)
 
 export default function TabOneScreen() {
   return (
-    <StyledView tw="flex-1 items-center justify-center bg-white">
-      <StyledText tw="flex-1 p-8 text-white m-5 bg-blue-700">
-        styled with tailwindCSS
+    <StyledView tw="flex-1 flex-col items-center justify-center p-5 bg-green-600">
+      <StyledText tw="text-white m-5 w-full font-bold text-lg text-center">
+        Styled with tailwind CSS
       </StyledText>
     </StyledView>
   )
