@@ -17,8 +17,7 @@ import { ColorSchemeName, Pressable } from 'react-native'
 import Colors from '../constants/Colors'
 import useColorScheme from '../hooks/useColorScheme'
 import NotFoundScreen from '../screens/NotFoundScreen/NotFoundScreen'
-import TabOneScreen from '../screens/TabOneScreen/TabOneScreen'
-import TabTwoScreen from '../screens/TabTwoScreen/TabTwoScreen'
+import TabTwoScreen from '../screens/CharacterScreen/CharacterScreen'
 import ModalScreen from '../screens/ModalScreen/ModalScreen'
 import {
   RootStackParamList,
@@ -26,6 +25,7 @@ import {
   RootTabScreenProps
 } from '../../types'
 import LinkingConfiguration from './LinkingConfiguration'
+import HomeScreen from '../screens/HomeScreen/HomeScreen'
 
 export default function Navigation({
   colorScheme
@@ -78,17 +78,17 @@ function BottomTabNavigator() {
 
   return (
     <BottomTab.Navigator
-      initialRouteName="TabOne"
+      initialRouteName="HomeScreen"
       screenOptions={{
         tabBarActiveTintColor: Colors[colorScheme].tint
       }}>
       <BottomTab.Screen
-        name="TabOne"
-        component={TabOneScreen}
-        options={({ navigation }: RootTabScreenProps<'TabOne'>) => ({
-          title: 'Tab One',
-          tabBarIcon: ({ color }: ITabBarIcon) => (
-            <TabBarIcon name="code" color={color} />
+        name="HomeScreen"
+        component={HomeScreen}
+        options={({ navigation }: RootTabScreenProps<'HomeScreen'>) => ({
+          title: '',
+          tabBarIcon: ({ color }: TabBarIconProps) => (
+            <TabBarIcon name="home" color={color} />
           ),
           headerRight: () => (
             <Pressable
@@ -110,8 +110,8 @@ function BottomTabNavigator() {
         name="TabTwo"
         component={TabTwoScreen}
         options={{
-          title: 'Tab Two',
-          tabBarIcon: ({ color }: ITabBarIcon) => (
+          title: '',
+          tabBarIcon: ({ color }: TabBarIconProps) => (
             <TabBarIcon name="code" color={color} />
           )
         }}
@@ -123,10 +123,10 @@ function BottomTabNavigator() {
 /**
  * You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
  */
-export interface ITabBarIcon {
+export interface TabBarIconProps {
   color: string
   name?: React.ComponentProps<typeof FontAwesome>['name']
 }
-function TabBarIcon(props: ITabBarIcon) {
+function TabBarIcon(props: TabBarIconProps) {
   return <FontAwesome size={30} style={{ marginBottom: -3 }} {...props} />
 }
