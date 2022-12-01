@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "hello-world",
-    "slug": "hello-world",
+    "name": "react-native-expo-mvp",
+    "slug": "react-native-expo-mvp",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
