@@ -16,8 +16,6 @@ import { ColorSchemeName, Pressable } from 'react-native'
 
 import Colors from '../constants/Colors'
 import useColorScheme from '../hooks/useColorScheme'
-import NotFoundScreen from '../screens/NotFoundScreen/NotFoundScreen'
-import TabTwoScreen from '../screens/CharacterScreen/CharacterScreen'
 import ModalScreen from '../screens/ModalScreen/ModalScreen'
 import {
   RootStackParamList,
@@ -25,8 +23,14 @@ import {
   RootTabScreenProps
 } from '../../types'
 import LinkingConfiguration from './LinkingConfiguration'
-import HomeScreen from '../screens/HomeScreen/HomeScreen'
 import LoginScreen from '../screens/LoginScreen/LoginScreen'
+import TicketsScreen from '../screens/TicketsScreen/TicketsScreen'
+import TabBarIcon, {
+  ICON_TYPE,
+  TabBarIconProps
+} from '../components/TabBarIcon/TabBarIcon'
+import ContractenScreen from '../screens/ContractenScreen/ContractenScreen'
+import TransportScreen from '../screens/TransportScreen/TransportScreen'
 
 export default function Navigation({
   colorScheme
@@ -49,7 +53,7 @@ export default function Navigation({
 const Stack = createNativeStackNavigator<RootStackParamList>()
 
 function RootNavigator() {
-  const user = false
+  const user = true
   return !user ? (
     <Stack.Navigator>
       <Stack.Screen
@@ -64,11 +68,6 @@ function RootNavigator() {
         name="Root"
         component={BottomTabNavigator}
         options={{ headerShown: false }}
-      />
-      <Stack.Screen
-        name="NotFound"
-        component={NotFoundScreen}
-        options={{ title: 'Oops!' }}
       />
       <Stack.Group screenOptions={{ presentation: 'modal' }}>
         <Stack.Screen name="Modal" component={ModalScreen} />
@@ -88,17 +87,22 @@ function BottomTabNavigator() {
 
   return (
     <BottomTab.Navigator
-      initialRouteName="HomeScreen"
+      initialRouteName="ContractenScreen"
       screenOptions={{
         tabBarActiveTintColor: Colors[colorScheme].tint
       }}>
       <BottomTab.Screen
-        name="HomeScreen"
-        component={HomeScreen}
-        options={({ navigation }: RootTabScreenProps<'HomeScreen'>) => ({
-          title: '',
+        name="ContractenScreen"
+        component={ContractenScreen}
+        options={({ navigation }: RootTabScreenProps<'ContractenScreen'>) => ({
+          title: 'Contracten',
           tabBarIcon: ({ color }: TabBarIconProps) => (
-            <TabBarIcon name="home" color={color} />
+            <TabBarIcon
+              name="clipboard-check"
+              size={30}
+              color={color}
+              type={ICON_TYPE.FA_5}
+            />
           ),
           headerRight: () => (
             <Pressable
@@ -108,7 +112,7 @@ function BottomTabNavigator() {
               })}>
               <FontAwesome
                 name="info-circle"
-                size={25}
+                size={30}
                 color={Colors[colorScheme].text}
                 style={{ marginRight: 15 }}
               />
@@ -117,26 +121,35 @@ function BottomTabNavigator() {
         })}
       />
       <BottomTab.Screen
-        name="TabTwo"
-        component={TabTwoScreen}
+        name="TicketsScreen"
+        component={TicketsScreen}
         options={{
-          title: '',
+          title: 'Tickets',
           tabBarIcon: ({ color }: TabBarIconProps) => (
-            <TabBarIcon name="code" color={color} />
+            <TabBarIcon
+              name="chatbox-ellipses-outline"
+              size={30}
+              color={color}
+              type={ICON_TYPE.ION}
+            />
+          )
+        }}
+      />
+      <BottomTab.Screen
+        name="TransportScreen"
+        component={TransportScreen}
+        options={{
+          title: 'Transport',
+          tabBarIcon: ({ color }: TabBarIconProps) => (
+            <TabBarIcon
+              name="truck"
+              size={30}
+              color={color}
+              type={ICON_TYPE.FA_5}
+            />
           )
         }}
       />
     </BottomTab.Navigator>
   )
-}
-
-/**
- * You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
- */
-export interface TabBarIconProps {
-  color: string
-  name?: React.ComponentProps<typeof FontAwesome>['name']
-}
-function TabBarIcon(props: TabBarIconProps) {
-  return <FontAwesome size={30} style={{ marginBottom: -3 }} {...props} />
 }
