@@ -1,4 +1,4 @@
-# react-native-expo-mvp
+# react-native-poc
 
 MVP for mobile app made with React Native and Expo
 
