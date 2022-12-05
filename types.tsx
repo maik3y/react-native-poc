@@ -30,6 +30,7 @@ export type RootTabParamList = {
   ContractenScreen: undefined
   TicketsScreen: undefined
   TransportScreen: undefined
+  ScanScreen: undefined
 }
 
 export type RootTabScreenProps<Screen extends keyof RootTabParamList> =

@@ -1,15 +1,33 @@
-import { Text, View } from 'react-native'
+import { ScrollView as DefaultScrollView } from 'react-native'
 import { styled } from 'nativewind'
+import React from 'react'
+
+import ContractBlock from '../../components/ContractBlock/ContractBlock'
 
 export default function ContractenScreen() {
-  const StyledView = styled(View)
-  const StyledText = styled(Text)
+  const ScrollView = styled(DefaultScrollView)
+
+  const contractMock = {
+    number: '177548',
+    name: 'Van Wijnen materieel BV',
+    reference: 'INH202220721',
+    location: {
+      street: 'Parkweg',
+      city: 'Schiedam',
+      number: '1-2'
+    }
+  }
 
   return (
-    <StyledView tw="flex-1 flex-col m-8 items-center justify-center p-5 bg-blue-600 rounded-3xl">
-      <StyledText tw="text-white m-5 w-full font-bold text-lg text-center">
-        Styled with tailwind CSS
-      </StyledText>
-    </StyledView>
+    <ScrollView tw="p-4">
+      <ContractBlock data={contractMock} />
+      <ContractBlock data={contractMock} />
+      <ContractBlock data={contractMock} />
+      <ContractBlock data={contractMock} />
+      <ContractBlock data={contractMock} />
+      <ContractBlock data={contractMock} />
+      <ContractBlock data={contractMock} />
+      <ContractBlock data={contractMock} />
+    </ScrollView>
   )
 }

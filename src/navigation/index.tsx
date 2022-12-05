@@ -6,11 +6,7 @@
 import * as React from 'react'
 import { FontAwesome } from '@expo/vector-icons'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
-import {
-  NavigationContainer,
-  DefaultTheme,
-  DarkTheme
-} from '@react-navigation/native'
+import { NavigationContainer } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { ColorSchemeName, Pressable } from 'react-native'
 
@@ -31,6 +27,9 @@ import TabBarIcon, {
 } from '../components/TabBarIcon/TabBarIcon'
 import ContractenScreen from '../screens/ContractenScreen/ContractenScreen'
 import TransportScreen from '../screens/TransportScreen/TransportScreen'
+import ScanScreen from '../screens/ScanScreen/ScanScreen'
+import { DARK_THEME } from '../constants/theme/DarkTheme'
+import { DEFAULT_THEME } from '../constants/theme/DefaultTheme'
 
 export default function Navigation({
   colorScheme
@@ -38,9 +37,7 @@ export default function Navigation({
   colorScheme: ColorSchemeName
 }) {
   return (
-    <NavigationContainer
-      linking={LinkingConfiguration}
-      theme={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
+    <NavigationContainer linking={LinkingConfiguration} theme={DEFAULT_THEME}>
       <RootNavigator />
     </NavigationContainer>
   )
@@ -96,11 +93,11 @@ function BottomTabNavigator() {
         component={ContractenScreen}
         options={({ navigation }: RootTabScreenProps<'ContractenScreen'>) => ({
           title: 'Contracten',
-          tabBarIcon: ({ color }: TabBarIconProps) => (
+          tabBarIcon: () => (
             <TabBarIcon
               name="clipboard-check"
               size={30}
-              color={color}
+              color={Colors[colorScheme].text}
               type={ICON_TYPE.FA_5}
             />
           ),
@@ -127,10 +124,10 @@ function BottomTabNavigator() {
           title: 'Tickets',
           tabBarIcon: ({ color }: TabBarIconProps) => (
             <TabBarIcon
-              name="chatbox-ellipses-outline"
+              name="format-list-checks"
               size={30}
-              color={color}
-              type={ICON_TYPE.ION}
+              color={Colors[colorScheme].text}
+              type={ICON_TYPE.MCI}
             />
           )
         }}
@@ -144,8 +141,23 @@ function BottomTabNavigator() {
             <TabBarIcon
               name="truck"
               size={30}
-              color={color}
+              color={Colors[colorScheme].text}
               type={ICON_TYPE.FA_5}
+            />
+          )
+        }}
+      />
+      <BottomTab.Screen
+        name="ScanScreen"
+        component={ScanScreen}
+        options={{
+          title: 'Scan',
+          tabBarIcon: ({ color }: TabBarIconProps) => (
+            <TabBarIcon
+              name="qr-code-outline"
+              size={30}
+              color={Colors[colorScheme].text}
+              type={ICON_TYPE.ION}
             />
           )
         }}

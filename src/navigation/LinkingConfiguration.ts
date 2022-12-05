@@ -29,6 +29,11 @@ const linking: LinkingOptions<RootStackParamList> = {
             screens: {
               TransportScreen: 'Transport'
             }
+          },
+          ScanScreen: {
+            screens: {
+              ScanScreen: 'Scan'
+            }
           }
         }
       },

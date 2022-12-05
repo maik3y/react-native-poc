@@ -1,10 +1,17 @@
-import { FontAwesome, FontAwesome5, Ionicons } from '@expo/vector-icons'
+import {
+  FontAwesome,
+  FontAwesome5,
+  Ionicons,
+  MaterialCommunityIcons
+} from '@expo/vector-icons'
+
 import React from 'react'
 
 export enum ICON_TYPE {
   FA = 'FA',
   FA_5 = 'FA_5',
-  ION = 'ION'
+  ION = 'ION',
+  MCI = 'MCI'
 }
 
 export interface TabBarIconProps {
@@ -20,6 +27,8 @@ export default function TabBarIcon(props: TabBarIconProps) {
       return <FontAwesome5 {...props} />
     case ICON_TYPE.ION:
       return <Ionicons {...props} />
+    case ICON_TYPE.MCI:
+      return <MaterialCommunityIcons {...props} />
     case ICON_TYPE.FA:
     default:
       return <FontAwesome {...props} />
