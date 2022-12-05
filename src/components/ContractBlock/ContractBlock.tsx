@@ -1,6 +1,7 @@
+import React from 'react'
 import { Text as DefaultText, View as DefaultView } from 'react-native'
 import { styled } from 'nativewind'
-import React from 'react'
+
 import { ContractBlockRow } from './ContractBlockRow/ContractBlockRow'
 
 interface ContractBlockProps {
@@ -19,7 +20,7 @@ export default function ContractBlock({ data }: { data: ContractBlockProps }) {
   const Text = styled(DefaultText)
 
   return (
-    <View tw="flex w-full rounded-sm border mb-2">
+    <View tw="flex w-full rounded-md border dark:border-white mb-2 overflow-hidden">
       <View tw="flex w-full bg-blue p-2 bg-purple-600">
         <Text tw="text-white font-bold">Contract {data.number}</Text>
       </View>

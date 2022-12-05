@@ -37,7 +37,9 @@ export default function Navigation({
   colorScheme: ColorSchemeName
 }) {
   return (
-    <NavigationContainer linking={LinkingConfiguration} theme={DEFAULT_THEME}>
+    <NavigationContainer
+      linking={LinkingConfiguration}
+      theme={colorScheme === 'dark' ? DARK_THEME : DEFAULT_THEME}>
       <RootNavigator />
     </NavigationContainer>
   )
@@ -122,7 +124,7 @@ function BottomTabNavigator() {
         component={TicketsScreen}
         options={{
           title: 'Tickets',
-          tabBarIcon: ({ color }: TabBarIconProps) => (
+          tabBarIcon: () => (
             <TabBarIcon
               name="format-list-checks"
               size={30}
@@ -137,7 +139,7 @@ function BottomTabNavigator() {
         component={TransportScreen}
         options={{
           title: 'Transport',
-          tabBarIcon: ({ color }: TabBarIconProps) => (
+          tabBarIcon: () => (
             <TabBarIcon
               name="truck"
               size={30}
@@ -152,7 +154,7 @@ function BottomTabNavigator() {
         component={ScanScreen}
         options={{
           title: 'Scan',
-          tabBarIcon: ({ color }: TabBarIconProps) => (
+          tabBarIcon: () => (
             <TabBarIcon
               name="qr-code-outline"
               size={30}
