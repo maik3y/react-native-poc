@@ -26,6 +26,7 @@ import {
 } from '../../types'
 import LinkingConfiguration from './LinkingConfiguration'
 import HomeScreen from '../screens/HomeScreen/HomeScreen'
+import LoginScreen from '../screens/LoginScreen/LoginScreen'
 
 export default function Navigation({
   colorScheme
@@ -48,7 +49,16 @@ export default function Navigation({
 const Stack = createNativeStackNavigator<RootStackParamList>()
 
 function RootNavigator() {
-  return (
+  const user = false
+  return !user ? (
+    <Stack.Navigator>
+      <Stack.Screen
+        name="Root"
+        component={LoginScreen}
+        options={{ headerShown: false }}
+      />
+    </Stack.Navigator>
+  ) : (
     <Stack.Navigator>
       <Stack.Screen
         name="Root"

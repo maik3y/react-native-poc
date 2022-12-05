@@ -1,30 +1,24 @@
-/* eslint-disable @typescript-eslint/no-unsafe-return */
-/* eslint-disable @typescript-eslint/no-unsafe-call */
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
-
 import * as React from 'react'
-import { Text, View, StyleSheet, TextInput, Button, Alert } from 'react-native'
+import { Text, View, TextInput, Button } from 'react-native'
 import { useForm, Controller } from 'react-hook-form'
-import Constants from 'expo-constants'
 
 const LoginScreen = () => {
   const {
     handleSubmit,
     control,
-    reset,
     formState: { errors }
   } = useForm({
     defaultValues: {
-      firstName: '',
-      lastName: ''
+      username: '',
+      password: ''
     }
   })
-  const onSubmit = (data: any) => {
+  const onSubmit = (data: unknown) => {
     console.log(data)
   }
 
   return (
-    <View tw="flex-1">
+    <View>
       <Text>First name</Text>
       <Controller
         control={control}
@@ -35,7 +29,7 @@ const LoginScreen = () => {
             value={value}
           />
         )}
-        name="firstName"
+        name="username"
         rules={{ required: true }}
       />
       <Text>Last name</Text>
@@ -48,7 +42,7 @@ const LoginScreen = () => {
             value={value}
           />
         )}
-        name="lastName"
+        name="password"
         rules={{ required: true }}
       />
 
