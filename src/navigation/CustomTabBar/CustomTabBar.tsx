@@ -30,9 +30,9 @@ export default function CustomTabBar({ navigation }: BottomTabBarProps) {
   }: MenuItemProps) => {
     return (
       <Pressable
-        tw="flex w-1/5 self-center"
+        tw="flex w-1/5 pt-2 pb-8 self-center"
         onPress={() => onPressHandlerCallBack()}>
-        <View tw="self-center color-white">
+        <View tw="self-center">
           <TabBarIcon
             color={colorScheme ? Colors[colorScheme].text : undefined}
             name={icon.name}
@@ -50,7 +50,7 @@ export default function CustomTabBar({ navigation }: BottomTabBarProps) {
   }
 
   return (
-    <View tw="inline-flex flex-row w-full pt-2 pb-8 justify-center items-center border-t border-gray-100 bg-white dark:bg-black">
+    <View tw="inline-flex flex-row w-full justify-center items-center border-t border-gray-100 bg-white dark:bg-black">
       <MenuItem
         showLabel
         label="Contracten"
