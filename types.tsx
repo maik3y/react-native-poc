@@ -9,6 +9,7 @@ import {
   NavigatorScreenParams
 } from '@react-navigation/native'
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
+import { TicketProps } from './src/screens/TicketsScreen/hooks/useTickets'
 
 declare global {
   namespace ReactNavigation {
@@ -31,6 +32,7 @@ export type RootTabParamList = {
   TicketsScreen: undefined
   TransportScreen: undefined
   ScanScreen: undefined
+  TicketDetails: { data: TicketProps }
 }
 
 export type RootTabScreenProps<Screen extends keyof RootTabParamList> =

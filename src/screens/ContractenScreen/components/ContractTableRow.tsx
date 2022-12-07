@@ -1,12 +1,12 @@
 import { Text as DefaultText, View as DefaultView } from 'react-native'
 import { styled } from 'nativewind'
 
-interface ContractBlockRowProps {
+interface ContractTableRowProps {
   label: string
   value: string
 }
 
-export const ContractBlockRow = ({ label, value }: ContractBlockRowProps) => {
+export const ContractTableRow = ({ label, value }: ContractTableRowProps) => {
   const View = styled(DefaultView)
   const Text = styled(DefaultText)
 

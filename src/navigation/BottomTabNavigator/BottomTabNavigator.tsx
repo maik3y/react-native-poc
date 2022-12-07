@@ -1,27 +1,28 @@
-import { FontAwesome } from '@expo/vector-icons'
+import { AntDesign, FontAwesome } from '@expo/vector-icons'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
+import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import React from 'react'
 import { Pressable } from 'react-native'
 import { RootTabParamList, RootTabScreenProps } from '../../../types'
 import TabBarIcon, { ICON_TYPE } from '../../components/TabBarIcon/TabBarIcon'
 import Colors from '../../constants/Colors'
 import useColorScheme from '../../hooks/useColorScheme'
-import ContractenScreen from '../../screens/ContractenScreen/ContractenScreen'
+import ContractenScreen from '../../screens/ContractenScreen'
 import ScanScreen from '../../screens/ScanScreen/ScanScreen'
-import TicketsScreen from '../../screens/TicketsScreen/TicketsScreen'
+import TicketsScreen from '../../screens/TicketsScreen'
 import TransportScreen from '../../screens/TransportScreen/TransportScreen'
 
-/**
- * A bottom tab navigator displays tab buttons on the bottom of the display to switch screens.
- * https://reactnavigation.org/docs/bottom-tab-navigator
- */
 const Tab = createBottomTabNavigator<RootTabParamList>()
 
 export default function BottomTabNavigator() {
   const colorScheme = useColorScheme()
 
   return (
-    <Tab.Navigator initialRouteName="ContractenScreen">
+    <Tab.Navigator
+      initialRouteName="ContractenScreen"
+      screenOptions={{
+        tabBarActiveTintColor: Colors[colorScheme].tint
+      }}>
       <Tab.Screen
         name="ContractenScreen"
         component={ContractenScreen}
@@ -53,8 +54,8 @@ export default function BottomTabNavigator() {
       <Tab.Screen
         name="TicketsScreen"
         component={TicketsScreen}
-        options={{
-          title: 'Tickets',
+        options={({ navigation }: RootTabScreenProps<'TicketsScreen'>) => ({
+          title: 'Jouw tickets',
           tabBarIcon: () => (
             <TabBarIcon
               name="format-list-checks"
@@ -62,8 +63,22 @@ export default function BottomTabNavigator() {
               color={Colors[colorScheme].text}
               type={ICON_TYPE.MCI}
             />
+          ),
+          headerRight: () => (
+            <Pressable
+              onPress={() => navigation.navigate('Modal')}
+              style={({ pressed }) => ({
+                opacity: pressed ? 0.5 : 1
+              })}>
+              <AntDesign
+                name="pluscircle"
+                size={30}
+                style={{ marginRight: 15 }}
+                color={Colors[colorScheme].main}
+              />
+            </Pressable>
           )
-        }}
+        })}
       />
       <Tab.Screen
         name="TransportScreen"
