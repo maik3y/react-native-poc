@@ -8,20 +8,24 @@ import { useColorScheme } from 'react-native'
 import Colors from '../constants/Colors'
 import { DARK_THEME } from '../constants/theme/DarkTheme'
 import { DEFAULT_THEME } from '../constants/theme/DefaultTheme'
-import ContractenIcon from '../screens/ContractenScreen/icons/ContractenIcon'
+import { ContractProps } from '../screens/ContractsScreen/hooks/useContracts'
+import ContractsIcon from '../screens/ContractsScreen/icons/ContractenIcon'
 import ScanIcon from '../screens/ScanScreen/icons/ScanIcon'
 import ScanScreen from '../screens/ScanScreen/ScanScreen'
 
 import TicketsIcon from '../screens/TicketsScreen/icons/TicketsIcon'
 import TransportIcon from '../screens/TransportScreen/icons/TransportIcon'
 import TransportScreen from '../screens/TransportScreen/TransportScreen'
-import ContractenScreenStack, {
-  ContractenStackParams
+import ContractsScreenStack, {
+  ContractsStackParams
 } from './stacks/ContractenStack'
 import TicketsScreenStack, { TicketsStackParams } from './stacks/TicketsStack'
 
 export type RootStackParams = {
-  ContractenStack: NavigatorScreenParams<ContractenStackParams>
+  ContractsStack: NavigatorScreenParams<ContractsStackParams>
+  Contract: {
+    data: ContractProps
+  }
   TicketsStack: NavigatorScreenParams<TicketsStackParams>
   Ticket: {
     id: number
@@ -50,14 +54,14 @@ const AppTabNavigator = () => {
             : ''
         })}>
         <RootStack.Screen
-          name="ContractenStack"
-          component={ContractenScreenStack}
+          name="ContractsStack"
+          component={ContractsScreenStack}
           options={{
-            title: 'Contracten',
+            title: 'Contracts',
             tabBarIcon: ({ color, size }) => (
-              <ContractenIcon color={color} size={size} />
+              <ContractsIcon color={color} size={size} />
             ),
-            tabBarLabel: 'Contracten'
+            tabBarLabel: 'Contracts'
           }}
         />
         <RootStack.Screen

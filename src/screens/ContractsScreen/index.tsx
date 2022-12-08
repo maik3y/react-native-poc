@@ -2,9 +2,13 @@ import React from 'react'
 
 import { ContractProps, useContracts } from './hooks/useContracts'
 import { useStyled } from '../../hooks/useStyled'
-import Contract from './components/Contract'
+import ContractCard from './components/ContractCard'
+import { NativeStackScreenProps } from '@react-navigation/native-stack'
+import { ContractsStackParams } from '../../navigation/stacks/ContractenStack'
 
-export default function ContractenScreen() {
+type Props = NativeStackScreenProps<ContractsStackParams, 'Contracts'>
+
+export default function ContractsScreen({ navigation }: Props) {
   const { View, Text, ScrollView } = useStyled()
   const { isSuccess, data, error, isLoading, isFetching } = useContracts()
 
@@ -34,7 +38,13 @@ export default function ContractenScreen() {
   return isSuccess ? (
     <ScrollView tw="p-4">
       {data.map((item: ContractProps, index: number) => (
-        <Contract key={index} data={item} />
+        <ContractCard
+          key={index}
+          data={item}
+          onPressCallback={(data: ContractProps) => {
+            navigation.navigate('Contract', { data })
+          }}
+        />
       ))}
     </ScrollView>
   ) : null

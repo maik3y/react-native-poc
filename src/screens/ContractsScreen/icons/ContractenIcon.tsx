@@ -2,6 +2,6 @@ import { FontAwesome5 } from '@expo/vector-icons'
 import * as React from 'react'
 import { IconProps } from '../../../../types'
 
-export default function ContractenIcon({ size, color }: IconProps) {
+export default function ContractsIcon({ size, color }: IconProps) {
   return <FontAwesome5 name="file-contract" size={size} color={color} />
 }

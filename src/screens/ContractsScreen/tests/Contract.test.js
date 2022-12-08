@@ -1,6 +1,6 @@
 import React from 'react'
 import renderer from 'react-test-renderer'
-import ContractBlock from '../components/Contract'
+import ContractBlock from '../components/ContractCard'
 
 const mockData = {
   number: '123456',

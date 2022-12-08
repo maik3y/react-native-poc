@@ -1,20 +1,26 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
-import ContractenScreen from '../../screens/ContractenScreen'
+import ContractScreen from '../../screens/ContractScreen'
+import ContractsScreen from '../../screens/ContractsScreen'
+import { ContractProps } from '../../screens/ContractsScreen/hooks/useContracts'
 
-export type ContractenStackParams = {
-  Contracten: undefined
+export type ContractsStackParams = {
+  Contracts: undefined
+  Contract: {
+    data: ContractProps
+  }
 }
 
-const ContractenStack = createNativeStackNavigator<ContractenStackParams>()
+const ContractsStack = createNativeStackNavigator<ContractsStackParams>()
 
-export default function ContractenScreenStack() {
+export default function ContractsScreenStack() {
   return (
-    <ContractenStack.Navigator
-      initialRouteName="Contracten"
+    <ContractsStack.Navigator
+      initialRouteName="Contracts"
       screenOptions={{
         headerShown: false
       }}>
-      <ContractenStack.Screen name="Contracten" component={ContractenScreen} />
-    </ContractenStack.Navigator>
+      <ContractsStack.Screen name="Contracts" component={ContractsScreen} />
+      <ContractsStack.Screen name="Contract" component={ContractScreen} />
+    </ContractsStack.Navigator>
   )
 }
