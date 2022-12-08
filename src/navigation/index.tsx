@@ -3,76 +3,33 @@ import {
   NavigationContainer,
   NavigatorScreenParams
 } from '@react-navigation/native'
-import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import React from 'react'
 import { useColorScheme } from 'react-native'
 import { DARK_THEME } from '../constants/theme/DarkTheme'
 import { DEFAULT_THEME } from '../constants/theme/DefaultTheme'
-import ContractenScreen from '../screens/ContractenScreen'
 import ContractenIcon from '../screens/ContractenScreen/icons/ContractenIcon'
 import ScanIcon from '../screens/ScanScreen/icons/ScanIcon'
 import ScanScreen from '../screens/ScanScreen/ScanScreen'
-import TicketScreen from '../screens/TicketScreen'
-import TicketsScreen from '../screens/TicketsScreen'
+
 import TicketsIcon from '../screens/TicketsScreen/icons/TicketsIcon'
 import TransportIcon from '../screens/TransportScreen/icons/TransportIcon'
 import TransportScreen from '../screens/TransportScreen/TransportScreen'
+import ContractenScreenStack, {
+  ContractenStackParams
+} from './stacks/ContractenStack'
+import TicketsScreenStack, { TicketsStackParams } from './stacks/TicketsStack'
 
 export type RootStackParams = {
   ContractenStack: NavigatorScreenParams<ContractenStackParams>
   TicketsStack: NavigatorScreenParams<TicketsStackParams>
   Ticket: {
-    name: string
+    id: number
   }
   Transport: undefined
   Scan: undefined
 }
 
 const RootStack = createBottomTabNavigator<RootStackParams>()
-
-export type TicketsStackParams = {
-  Tickets: undefined
-  Ticket: {
-    name: string
-  }
-}
-
-const TicketsStack = createNativeStackNavigator<TicketsStackParams>()
-
-const TicketsScreenStack = () => {
-  return (
-    <TicketsStack.Navigator
-      initialRouteName="Tickets"
-      screenOptions={{
-        headerShown: false
-      }}>
-      <TicketsStack.Screen name="Tickets" component={TicketsScreen} />
-      <TicketsStack.Screen name="Ticket" component={TicketScreen} />
-    </TicketsStack.Navigator>
-  )
-}
-
-export type ContractenStackParams = {
-  Contracten: undefined
-  contract: {
-    name: string
-  }
-}
-
-const ContractenStack = createNativeStackNavigator<ContractenStackParams>()
-
-const ContractenScreenStack = () => {
-  return (
-    <ContractenStack.Navigator
-      initialRouteName="Contracten"
-      screenOptions={{
-        headerShown: false
-      }}>
-      <ContractenStack.Screen name="Contracten" component={ContractenScreen} />
-      {/* <ContractenStack.Screen name="Contract" component={ContractScreen} /> */}
-    </ContractenStack.Navigator>
-  )
-}
 
 const AppTabNavigator = () => {
   const colorScheme = useColorScheme()

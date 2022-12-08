@@ -4,7 +4,7 @@ import { SafeAreaProvider } from 'react-native-safe-area-context'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 
 import useCachedResources from './src/hooks/useCachedResources'
-import AppTabNavigator from './src/navigation/AppTabNavigator'
+import AppTabNavigator from './src/navigation'
 
 const queryClient = new QueryClient()
 

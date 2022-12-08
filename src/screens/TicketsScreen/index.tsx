@@ -2,11 +2,11 @@ import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import React from 'react'
 
 import { useStyled } from '../../hooks/useStyled'
-import { RootStackParams } from '../../navigation/AppTabNavigator'
+import { TicketsStackParams } from '../../navigation/stacks/TicketsStack'
 import TicketCard from './components/TicketCard'
 import { TicketProps, useTickets } from './hooks/useTickets'
 
-type Props = NativeStackScreenProps<RootStackParams, 'Tickets'>
+type Props = NativeStackScreenProps<TicketsStackParams, 'Tickets'>
 
 export default function TicketsScreen({ navigation }: Props) {
   const { View, Text, ScrollView } = useStyled()
@@ -14,23 +14,23 @@ export default function TicketsScreen({ navigation }: Props) {
 
   if (isFetching)
     return (
-      <View tw="flex justify-center items-center">
-        <Text tw="dark:color-white">Fetching...</Text>
+      <View tw="flex-1 justify-center items-center">
+        <Text tw="text-lg dark:color-white">Fetching...</Text>
       </View>
     )
 
   if (isLoading)
     return (
-      <View tw="flex justify-center items-center">
-        <Text tw="dark:color-white">Loading...</Text>
+      <View tw="flex-1 justify-center items-center">
+        <Text tw="text-lg dark:color-white">Loading...</Text>
       </View>
     )
 
   if (error instanceof Error)
     return (
-      <View tw="flex justify-center items-center">
-        <Text tw="dark:color-white">
-          An error has occurred: {error.message}
+      <View tw="flex-1 justify-center items-center">
+        <Text tw="text-lg dark:color-white">
+          An error has occurred: <Text tw="font-bold">{error.message}</Text>
         </Text>
       </View>
     )

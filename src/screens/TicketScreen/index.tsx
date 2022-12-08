@@ -1,7 +1,7 @@
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import React from 'react'
 import { useStyled } from '../../hooks/useStyled'
-import { RootStackParams } from '../../navigation/AppTabNavigator'
+import { RootStackParams } from '../../navigation'
 
 type Props = NativeStackScreenProps<RootStackParams, 'Ticket'>
 
@@ -10,7 +10,7 @@ export default function TicketScreen({ route, navigation }: Props) {
 
   return (
     <View tw="flex-1 justify-center items-center">
-      <Text tw="text-lg font-bold">{route.params.name}</Text>
+      <Text tw="text-lg font-bold">{route.params.id}</Text>
       <Pressable
         onPress={() => {
           navigation.navigate('Scan')
