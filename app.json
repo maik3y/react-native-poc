@@ -15,12 +15,13 @@
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.maik3y.reactnativeexpomvp"
+      "bundleIdentifier": "com.maik3y.reactnativeexpomvp",
+      "infoPlist": {
+        "NSFaceIDUsageDescription": "This app will optionally use Face ID or Touch ID to save login"
+      }
     },
     "android": {
       "adaptiveIcon": {
