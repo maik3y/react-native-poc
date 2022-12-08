@@ -5,6 +5,7 @@ import {
 } from '@react-navigation/native'
 import React from 'react'
 import { useColorScheme } from 'react-native'
+import Colors from '../constants/Colors'
 import { DARK_THEME } from '../constants/theme/DarkTheme'
 import { DEFAULT_THEME } from '../constants/theme/DefaultTheme'
 import ContractenIcon from '../screens/ContractenScreen/icons/ContractenIcon'
@@ -41,8 +42,12 @@ const AppTabNavigator = () => {
       <RootStack.Navigator
         initialRouteName="TicketsStack"
         screenOptions={() => ({
-          tabBarActiveTintColor: 'purple',
-          tabBarInactiveTintColor: 'gray'
+          tabBarActiveTintColor: colorScheme
+            ? Colors[colorScheme].tabBarActiveTintColor
+            : '',
+          tabBarInactiveTintColor: colorScheme
+            ? Colors[colorScheme].tabBarInactiveTintColor
+            : ''
         })}>
         <RootStack.Screen
           name="ContractenStack"
@@ -59,6 +64,7 @@ const AppTabNavigator = () => {
           name="TicketsStack"
           component={TicketsScreenStack}
           options={{
+            title: 'Tickets',
             tabBarIcon: ({ color, size }) => (
               <TicketsIcon color={color} size={size} />
             ),

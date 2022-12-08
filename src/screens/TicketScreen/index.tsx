@@ -9,20 +9,24 @@ export default function TicketScreen({ route, navigation }: Props) {
   const { View, Text, Pressable } = useStyled()
 
   return (
-    <View tw="flex-1 justify-center items-center">
-      <Text tw="text-lg font-bold">{route.params.id}</Text>
-      <Pressable
-        onPress={() => {
-          navigation.navigate('Scan')
-        }}>
-        <Text>To scan</Text>
-      </Pressable>
-      <Pressable
-        onPress={() => {
-          navigation.goBack()
-        }}>
-        <Text>Go back</Text>
-      </Pressable>
+    <View tw="flex-1">
+      <Text tw="text-lg font-bold py-5 text-center dark:text-white">
+        Ticket: {route.params.id}
+      </Text>
+      <View tw="flex-1 flex-row justify-center items-center">
+        <Pressable
+          onPress={() => {
+            navigation.goBack()
+          }}>
+          <Text tw="text-blue-500 px-10 text-lg">Go back</Text>
+        </Pressable>
+        <Pressable
+          onPress={() => {
+            navigation.navigate('Scan')
+          }}>
+          <Text tw="text-blue-500 px-10 text-lg">To scan</Text>
+        </Pressable>
+      </View>
     </View>
   )
 }
