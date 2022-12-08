@@ -1,14 +1,14 @@
+import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import React from 'react'
-import { Button } from 'react-native'
-import { RootTabScreenProps } from '../../../types'
 
 import { useStyled } from '../../hooks/useStyled'
-import Ticket from './components/Ticket'
+import { RootStackParams } from '../../navigation/AppTabNavigator'
+import TicketCard from './components/TicketCard'
 import { TicketProps, useTickets } from './hooks/useTickets'
 
-export default function TicketsScreen({
-  navigation
-}: RootTabScreenProps<'TicketsScreen'>) {
+type Props = NativeStackScreenProps<RootStackParams, 'Tickets'>
+
+export default function TicketsScreen({ navigation }: Props) {
   const { View, Text, ScrollView } = useStyled()
   const { isSuccess, data, error, isLoading, isFetching } = useTickets()
 
@@ -38,7 +38,13 @@ export default function TicketsScreen({
   return isSuccess ? (
     <ScrollView tw="p-4">
       {data.map((item: TicketProps, index: number) => (
-        <Ticket key={index} data={item} />
+        <TicketCard
+          key={index}
+          data={item}
+          onPress={(id: number) => {
+            navigation.navigate('Ticket', { id })
+          }}
+        />
       ))}
     </ScrollView>
   ) : null

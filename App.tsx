@@ -6,6 +6,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import useCachedResources from './src/hooks/useCachedResources'
 import useColorScheme from './src/hooks/useColorScheme'
 import Navigation from './src/navigation'
+import AppTabNavigator from './src/navigation/AppTabNavigator'
 
 const queryClient = new QueryClient()
 
@@ -19,7 +20,8 @@ export default function App() {
     return (
       <QueryClientProvider client={queryClient}>
         <SafeAreaProvider>
-          <Navigation colorScheme={colorScheme} />
+          {/* <Navigation colorScheme={colorScheme} /> */}
+          <AppTabNavigator />
           <StatusBar />
         </SafeAreaProvider>
       </QueryClientProvider>

@@ -1,10 +1,10 @@
 import * as React from 'react'
 import { NavigationContainer } from '@react-navigation/native'
 import { ColorSchemeName } from 'react-native'
-import LinkingConfiguration from './LinkingConfiguration'
+import LinkingConfiguration from './__LinkingConfiguration'
 import { DARK_THEME } from '../constants/theme/DarkTheme'
 import { DEFAULT_THEME } from '../constants/theme/DefaultTheme'
-import RootNavigator from './RootNavigator/RootNavigator'
+import RootNavigator from './__RootNavigator/RootNavigator'
 
 export default function Navigation({
   colorScheme
