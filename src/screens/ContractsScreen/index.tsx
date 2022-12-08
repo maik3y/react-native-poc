@@ -4,7 +4,7 @@ import { ContractProps, useContracts } from './hooks/useContracts'
 import { useStyled } from '../../hooks/useStyled'
 import ContractCard from './components/ContractCard'
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
-import { ContractsStackParams } from '../../navigation/stacks/ContractenStack'
+import { ContractsStackParams } from '../../router/stacks/ContractenStack'
 
 type Props = NativeStackScreenProps<ContractsStackParams, 'Contracts'>
 

@@ -1,9 +1,9 @@
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import React from 'react'
 import { useStyled } from '../../hooks/useStyled'
-import { RootStackParams } from '../../navigation'
+import { AppStackParams } from '../../router/stacks/AppStack'
 
-type Props = NativeStackScreenProps<RootStackParams, 'Ticket'>
+type Props = NativeStackScreenProps<AppStackParams, 'Ticket'>
 
 export default function TicketScreen({ route, navigation }: Props) {
   const { View, Text, Pressable } = useStyled()

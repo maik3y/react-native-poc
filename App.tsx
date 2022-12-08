@@ -4,7 +4,8 @@ import { SafeAreaProvider } from 'react-native-safe-area-context'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 
 import useCachedResources from './src/hooks/useCachedResources'
-import AppTabNavigator from './src/navigation'
+import Router from './src/router'
+import AuthProvider from './src/contexts/AuthProvider'
 
 const queryClient = new QueryClient()
 
@@ -16,10 +17,12 @@ export default function App() {
   } else {
     return (
       <QueryClientProvider client={queryClient}>
-        <SafeAreaProvider>
-          <AppTabNavigator />
-          <StatusBar />
-        </SafeAreaProvider>
+        <AuthProvider>
+          <SafeAreaProvider>
+            <Router />
+            <StatusBar />
+          </SafeAreaProvider>
+        </AuthProvider>
       </QueryClientProvider>
     )
   }

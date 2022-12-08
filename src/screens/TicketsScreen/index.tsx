@@ -2,7 +2,7 @@ import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import React from 'react'
 
 import { useStyled } from '../../hooks/useStyled'
-import { TicketsStackParams } from '../../navigation/stacks/TicketsStack'
+import { TicketsStackParams } from '../../router/stacks/TicketsStack'
 import TicketCard from './components/TicketCard'
 import { TicketProps, useTickets } from './hooks/useTickets'
 
