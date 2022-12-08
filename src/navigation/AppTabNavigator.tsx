@@ -5,6 +5,9 @@ import {
 } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import React from 'react'
+import { useColorScheme } from 'react-native'
+import { DARK_THEME } from '../constants/theme/DarkTheme'
+import { DEFAULT_THEME } from '../constants/theme/DefaultTheme'
 import ContractenScreen from '../screens/ContractenScreen'
 import ContractenIcon from '../screens/ContractenScreen/icons/ContractenIcon'
 import ScanIcon from '../screens/ScanScreen/icons/ScanIcon'
@@ -72,8 +75,12 @@ const ContractenScreenStack = () => {
 }
 
 const AppTabNavigator = () => {
+  const colorScheme = useColorScheme()
+
+  // TODO: Linking configuration for NavigationContainer?
   return (
-    <NavigationContainer>
+    <NavigationContainer
+      theme={colorScheme === 'dark' ? DARK_THEME : DEFAULT_THEME}>
       <RootStack.Navigator
         initialRouteName="TicketsStack"
         screenOptions={() => ({
