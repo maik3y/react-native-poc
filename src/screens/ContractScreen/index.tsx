@@ -1,5 +1,6 @@
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import React from 'react'
+import { SafeAreaView } from 'react-native'
 import { useStyled } from '../../hooks/useStyled'
 import { AppStackParams } from '../../router/stacks/AppStack'
 

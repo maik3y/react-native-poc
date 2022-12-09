@@ -1,5 +1,7 @@
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import React from 'react'
+import { SafeAreaView } from 'react-native-safe-area-context'
+import PageTitle from '../../components/PageTitle/PageTitle'
 
 import { useStyled } from '../../hooks/useStyled'
 import { TicketsStackParams } from '../../router/stacks/TicketsStack'
@@ -36,16 +38,19 @@ export default function TicketsScreen({ navigation }: Props) {
     )
 
   return isSuccess ? (
-    <ScrollView tw="p-4">
-      {data.map((item: TicketProps, index: number) => (
-        <TicketCard
-          key={index}
-          data={item}
-          onPress={(id: number) => {
-            navigation.navigate('Ticket', { id })
-          }}
-        />
-      ))}
-    </ScrollView>
+    <SafeAreaView>
+      <PageTitle title="Tickets" />
+      <ScrollView tw="p-4">
+        {data.map((item: TicketProps, index: number) => (
+          <TicketCard
+            key={index}
+            data={item}
+            onPress={(id: number) => {
+              navigation.navigate('Ticket', { id })
+            }}
+          />
+        ))}
+      </ScrollView>
+    </SafeAreaView>
   ) : null
 }

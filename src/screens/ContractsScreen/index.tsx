@@ -5,6 +5,8 @@ import { useStyled } from '../../hooks/useStyled'
 import ContractCard from './components/ContractCard'
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import { ContractsStackParams } from '../../router/stacks/ContractenStack'
+import { SafeAreaView } from 'react-native'
+import PageTitle from '../../components/PageTitle/PageTitle'
 
 type Props = NativeStackScreenProps<ContractsStackParams, 'Contracts'>
 
@@ -36,16 +38,19 @@ export default function ContractsScreen({ navigation }: Props) {
     )
 
   return isSuccess ? (
-    <ScrollView tw="p-4">
-      {data.map((item: ContractProps, index: number) => (
-        <ContractCard
-          key={index}
-          data={item}
-          onPressCallback={(data: ContractProps) => {
-            navigation.navigate('Contract', { data })
-          }}
-        />
-      ))}
-    </ScrollView>
+    <SafeAreaView>
+      <PageTitle title="Contracten" />
+      <ScrollView tw="p-4">
+        {data.map((item: ContractProps, index: number) => (
+          <ContractCard
+            key={index}
+            data={item}
+            onPressCallback={(data: ContractProps) => {
+              navigation.navigate('Contract', { data })
+            }}
+          />
+        ))}
+      </ScrollView>
+    </SafeAreaView>
   ) : null
 }

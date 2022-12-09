@@ -46,42 +46,44 @@ export default function AppStack() {
         name="ContractsStack"
         component={ContractsScreenStack}
         options={{
-          title: 'Contracts',
+          headerShown: false,
+          tabBarShowLabel: false,
           tabBarIcon: ({ color, size }) => (
             <ContractsIcon color={color} size={size} />
-          ),
-          tabBarLabel: 'Contracts'
+          )
         }}
       />
       <RootStack.Screen
         name="TicketsStack"
         component={TicketsScreenStack}
         options={{
-          title: 'Tickets',
+          headerShown: false,
+          tabBarShowLabel: false,
           tabBarIcon: ({ color, size }) => (
             <TicketsIcon color={color} size={size} />
-          ),
-          tabBarLabel: 'Tickets'
+          )
         }}
       />
       <RootStack.Screen
         name="Transport"
         component={TransportScreen}
         options={{
+          headerShown: false,
+          tabBarShowLabel: false,
           tabBarIcon: ({ color, size }) => (
             <TransportIcon color={color} size={size} />
-          ),
-          tabBarLabel: 'Transport'
+          )
         }}
       />
       <RootStack.Screen
         name="Scan"
         component={ScanScreen}
         options={{
+          headerShown: false,
+          tabBarShowLabel: false,
           tabBarIcon: ({ color, size }) => (
             <ScanIcon color={color} size={size} />
-          ),
-          tabBarLabel: 'Scan'
+          )
         }}
       />
     </RootStack.Navigator>

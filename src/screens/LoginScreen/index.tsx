@@ -1,5 +1,7 @@
 import * as LocalAuthentication from 'expo-local-authentication'
 import * as React from 'react'
+import { TouchableOpacity, TouchableOpacityBase } from 'react-native'
+import useAuth from '../../hooks/useAuth'
 import { useStyled } from '../../hooks/useStyled'
 
 enum EResult {
@@ -10,7 +12,8 @@ enum EResult {
 }
 
 export default function LoginScreen() {
-  const { View, Text, Pressable } = useStyled()
+  const { signIn } = useAuth()
+  const { View, Text } = useStyled()
   const [facialRecognitionAvailable, setFacialRecognitionAvailable] =
     React.useState(false)
   const [fingerprintAvailable, setFingerprintAvailable] = React.useState(false)
@@ -36,17 +39,15 @@ export default function LoginScreen() {
   }
 
   const authenticate = async () => {
-    if (loading) {
-      return
-    }
-
+    if (loading) return
     setLoading(true)
 
     try {
       const results = await LocalAuthentication.authenticateAsync()
-
+      console.debug(results)
       if (results.success) {
         setResult(EResult.SUCCESS)
+        void signIn()
       } else if (results.error === 'unknown') {
         setResult(EResult.DISABLED)
       } else if (
@@ -59,7 +60,6 @@ export default function LoginScreen() {
     } catch (error) {
       setResult(EResult.ERROR)
     }
-
     setLoading(false)
   }
 
@@ -111,9 +111,11 @@ export default function LoginScreen() {
         {description}
       </Text>
       {facialRecognitionAvailable || fingerprintAvailable || irisAvailable ? (
-        <Pressable onPress={authenticate}>
-          <Text tw="text-center mt-5 text-blue-500 text-lg">Authenticate</Text>
-        </Pressable>
+        <TouchableOpacity onPress={authenticate}>
+          <Text tw="text-center mt-5 text-blue-500 text-lg">
+            Authenticate Me
+          </Text>
+        </TouchableOpacity>
       ) : null}
       {resultMessage ? (
         <Text tw="text-center mt-24 dark:text-white">{resultMessage}</Text>
