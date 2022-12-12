@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "react-native-expo-mvp",
-    "slug": "react-native-expo-mvp",
+    "name": "klein-units-poc",
+    "slug": "klein-units-poc",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
@@ -18,9 +18,9 @@
     "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.maik3y.reactnativeexpomvp",
+      "bundleIdentifier": "com.maik3y.kleinunitspoc",
       "infoPlist": {
-        "NSFaceIDUsageDescription": "This app will optionally use Face ID or Touch ID to save login"
+        "NSFaceIDUsageDescription": "This app will optionally use Face ID or Touch ID to login"
       }
     },
     "android": {
@@ -29,7 +29,7 @@
         "backgroundColor": "#ffffff"
       },
       "permissions": [],
-      "package": "com.maik3y.reactnativeexpomvp"
+      "package": "com.maik3y.kleinunitspoc"
     },
     "web": {
       "favicon": "./assets/images/favicon.png"
