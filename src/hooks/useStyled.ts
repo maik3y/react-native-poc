@@ -2,6 +2,7 @@ import { styled } from 'nativewind'
 import {
   View as DefaultView,
   Text as DefaultText,
+  TextInput as DefaultTextInput,
   Pressable as DefaultPressable,
   ScrollView as DefaultScrollView
 } from 'react-native'
@@ -13,6 +14,7 @@ import {
 export function useStyled() {
   const View = styled(DefaultView)
   const Text = styled(DefaultText)
+  const TextInput = styled(DefaultTextInput)
   const Pressable = styled(DefaultPressable)
   const ScrollView = styled(DefaultScrollView)
   const FontAwesome = styled(DefaultFontAwesome)
@@ -21,6 +23,7 @@ export function useStyled() {
   return {
     View,
     Text,
+    TextInput,
     Pressable,
     ScrollView,
     FontAwesome,

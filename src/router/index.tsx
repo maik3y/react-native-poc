@@ -14,7 +14,8 @@ export default function Router() {
   return (
     <NavigationContainer
       theme={colorScheme === 'dark' ? DARK_THEME : DEFAULT_THEME}>
-      {isLoggedIn ? <AppStack /> : <AuthStack />}
+      {/* {isLoggedIn ? <AppStack /> : <AuthStack />} */}
+      <AppStack />
     </NavigationContainer>
   )
 }
