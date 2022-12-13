@@ -12,7 +12,7 @@ type Props = NativeStackScreenProps<ContractsStackParams, 'Contracts'>
 
 export default function ContractsScreen({ navigation }: Props) {
   const { View, Text, ScrollView } = useStyled()
-  const { isSuccess, data, error, isLoading, isFetching } = useContracts()
+  const { data, error, isFetching, isSuccess, isLoading } = useContracts()
 
   if (isFetching)
     return (

@@ -1,13 +1,9 @@
 import React from 'react'
-import {
-  Text as DefaultText,
-  TouchableOpacity,
-  View as DefaultView
-} from 'react-native'
-import { styled } from 'nativewind'
+import { TouchableOpacity } from 'react-native'
 
 import { ContractTableRow } from './ContractTableRow'
 import { ContractProps } from '../hooks/useContracts'
+import { useStyled } from '../../../hooks/useStyled'
 
 interface Props {
   data: ContractProps
@@ -15,8 +11,7 @@ interface Props {
 }
 
 const ContractCard: React.FC<Props> = ({ data, onPressCallback }) => {
-  const View = styled(DefaultView)
-  const Text = styled(DefaultText)
+  const { Text, View } = useStyled()
 
   return (
     <TouchableOpacity onPress={() => onPressCallback(data)}>
