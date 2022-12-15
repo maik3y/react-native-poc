@@ -5,13 +5,13 @@ import { TicketProps } from '../hooks/useTickets'
 
 interface Props {
   data: TicketProps
-  onPress: (id: number) => void
+  onPressCallback: (id: number) => void
 }
 
-const TicketCard: React.FC<Props> = ({ data, onPress }) => {
+const TicketCard: React.FC<Props> = ({ data, onPressCallback }) => {
   const { View, Text } = useStyled()
   return (
-    <TouchableOpacity onPress={() => onPress(data.id)}>
+    <TouchableOpacity onPress={() => onPressCallback(data.id)}>
       <View tw="flex flex-row h-14 mb-3 items-center border border-cyan-700 rounded-xl overflow-hidden">
         <View tw="flex flex-col w-1/4 h-full justify-center bg-cyan-700">
           <Text tw="text-center font-bold text-white text-md">{data.id}</Text>

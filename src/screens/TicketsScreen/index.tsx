@@ -45,7 +45,7 @@ export default function TicketsScreen({ navigation }: Props) {
           <TicketCard
             key={index}
             data={item}
-            onPress={(id: number) => {
+            onPressCallback={(id: number) => {
               navigation.navigate('Ticket', { id })
             }}
           />
